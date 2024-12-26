@@ -1,0 +1,1 @@
+dotnet publish ConsoleApp2C.csproj --no-build --runtime win-x64 --configuration Release   -p:PublishSingleFile=true -p:SelfContained=true -p:PublishReadyToRun=false  -p:PublishTrimmed=false --output ./SelfContained_SingleFile_win-x64

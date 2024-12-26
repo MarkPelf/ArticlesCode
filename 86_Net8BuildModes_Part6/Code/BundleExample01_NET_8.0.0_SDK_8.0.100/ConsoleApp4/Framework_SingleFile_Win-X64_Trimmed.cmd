@@ -1,0 +1,1 @@
+dotnet publish ConsoleApp4.csproj --no-build --runtime win-x64 --use-current-runtime  --configuration Release   -p:PublishSingleFile=true --no-self-contained -p:PublishTrimmed=true --output ./Framework_SingleFile_Win-X64_Trimmed

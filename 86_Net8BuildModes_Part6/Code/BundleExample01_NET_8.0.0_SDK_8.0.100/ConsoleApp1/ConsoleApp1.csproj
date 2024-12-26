@@ -1,0 +1,23 @@
+﻿<!--ConsoleApp1.csproj +++++++++++++++++++++++++++++++++++++-->
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<PlatformTarget>x64</PlatformTarget>
+		<Platforms>AnyCPU;x64</Platforms>
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+		<DebugType>embedded</DebugType>
+		<PublishSingleFile>true</PublishSingleFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\ClassLibrary1\ClassLibraryA.csproj" />
+	</ItemGroup>
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Exec Command="echo +++Post-Build+++++&#xD;&#xA;if $(ConfigurationName)  ==   Debug  (&#xD;&#xA;echo +++++Debug+++++ &#xD;&#xA;)  &#xD;&#xA;if $(ConfigurationName)  ==  Release    (    &#xD;&#xA;echo +++++Framework_SingleFile_Win-X64.cmd+++++      &#xD;&#xA;call Framework_SingleFile_Win-X64.cmd     &#xD;&#xA;&#xD;&#xA;)   " />
+	</Target>
+
+</Project>

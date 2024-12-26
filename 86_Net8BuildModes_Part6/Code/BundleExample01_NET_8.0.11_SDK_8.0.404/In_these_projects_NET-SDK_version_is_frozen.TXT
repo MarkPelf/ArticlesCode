@@ -1,0 +1,1 @@
+By using global.json file, the version of .NET-SDK is frozen in projects to 8.0.404. I did it to make sure I get the SDK version I wanted, to test build settings. Problem is when upgrading to new version of SDK, all those global.json files need to be manually updated. 

@@ -1,0 +1,2 @@
+dotnet publish ConsoleApp5.csproj --no-build --runtime win-x64 --configuration Release  -p:SelfContained=true  -p:PublishTrimmed=true --output ./win-x64_Trimmed_AOT
+rem dotnet publish ConsoleApp5.csproj --no-build --runtime win-x64 --configuration Release  --output ./win-x64_Trimmed_AOT

@@ -1,0 +1,9 @@
+===Build that I was not able to make==================================================
+
+Publish mode:
+1)Release; 2)framework-dependent; 3)Platform-specific-win-x64; 4)Single-file; 5)Trimmed; 6)Not-precompiled; 7)PdbEmbeded
+
+I was looking into options, but was not able to make "framework-dependent-Trimmed" build.
+It looks like Trimmed builds are possible with Microsoft tools in .NET8 only for self-contained (which is opposite to framework-dependent) mode builds.
+I was getting this when tried:
+Error (active)	NETSDK1102	Optimizing assemblies for size is not supported for the selected publish configuration. Please ensure that you are publishing a self-contained app. 
