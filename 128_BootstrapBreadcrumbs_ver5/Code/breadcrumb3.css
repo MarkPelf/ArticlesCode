@@ -1,0 +1,298 @@
+/* breadcrumb3.css */
+/* by Mark.Pelf@Codeproject.com, 
+   using partly code from Graeme_Grant@codeproject.com  */
+
+.breadcrumb3-lg, .breadcrumb3-md, .breadcrumb3-sm{
+    /* here I am assigning my CSS variable --_bs-primary
+	   used in this library. First I look if Bootstrap CSS
+       variable --bs-primary is defined, to get value from it.
+       If not, then I assign default value #0d6efd */
+    --_bs-primary: var(--bs-primary,#0d6efd);
+    --_bs-primary-text-emphasis: var(--bs-primary-text-emphasis,#052c65);
+    --_bs-primary-bg-subtle: var(--bs-primary-bg-subtle,#cfe2ff);
+
+    --_bs-secondary: var(--bs-secondary,#6c757d);
+    --_bs-secondary-text-emphasis: var(--bs-secondary-text-emphasis,#0a3622);
+    --_bs-secondary-bg-subtle: var(--bs-secondary-bg-subtle,#e2e3e5);
+
+    --_bs-success: var(--bs-success,#198754);
+    --_bs-success-text-emphasis: var(--bs-success-text-emphasis,#0a3622);
+    --_bs-success-bg-subtle: var(--bs-success-bg-subtle,#d1e7dd);
+
+    --_bs-info: var(--bs-info,#0dcaf0);
+    --_bs-info-text-emphasis: var(--bs-info-text-emphasis, #055160);
+    --_bs-info-bg-subtle: var(--bs-info-bg-subtle,#cff4fc);
+
+    --_bs-warning: var(--bs-warning,#ffc107);
+    --_bs-warning-text-emphasis: var(--bs-warning-text-emphasis,#664d03);
+    --_bs-warning-bg-subtle: var(--bs-warning-bg-subtle,#fff3cd);
+
+    --_bs-danger: var(--bs-danger,#dc3545);
+    --_bs-danger-text-emphasis: var(--bs-danger-text-emphasis,#58151c);
+    --_bs-danger-bg-subtle: var(--bs-danger-bg-subtle,#f8d7da);
+
+    --_bs-light: var(--bs-light,#f8f9fa);
+    --_bs-light-text-emphasis: var(--bs-light-text-emphasis,#495057);
+    --_bs-light-bg-subtle: var(--bs-light-bg-subtle,#fcfcfd);
+
+    --_bs-dark: var(--bs-dark,#212529);
+    --_bs-dark-text-emphasis: var(--bs-dark-text-emphasis,#495057);
+    --_bs-dark-bg-subtle: var(--bs-dark-bg-subtle,#ced4da);
+
+    --_bs-gray: var(--bs-gray,#6c757d);
+    --_bs-white: white;
+    --_bs-black: black;
+
+    /* changeable colors */
+    --_bgcolor: var(--_bs-info);
+    --_color: var(--_bs-black);
+    --_bg-subtle: var(--_bs-gray);
+    --_hover-bgcolor: var(--_bs-primary);
+    --_hover-color: var(--_bs-primary-text-emphasis);
+}
+
+@media (max-width: 767px) {
+    /* making it responsive, using CSS Flexbox with column (vertical) direction*/
+    .breadcrumb3-lg, .breadcrumb3-md, .breadcrumb3-sm {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .breadcrumb3-lg  .breadcrumb3-item {
+        width: 80% ;
+        border-radius: 4px 0 0 4px;
+        padding-left: 25px ;
+    }
+
+    .breadcrumb3-md .breadcrumb3-item {
+        width: 80% ;
+        border-radius: 3px 0 0 3px;
+        padding-left: 20px ;
+    }
+
+    .breadcrumb3-sm .breadcrumb3-item {
+        width: 80% ;
+        border-radius: 3px 0 0 3px;
+        padding-left: 18px ;
+    }
+}
+
+/* large size breadcrumb3-item -----------------------------------*/
+.breadcrumb3-item {
+    position: relative;
+    display: table-cell;
+    vertical-align: middle;
+    color: var(--_color);
+    background-color: var(--_bgcolor);
+    height: 40px;
+    line-height: 18px;
+    font-size: 18px;
+    text-align: center;
+    padding-right: 10px;
+    padding-left: 25px;
+    text-decoration: none;
+	text-shadow: -1px -1px 2px var(--_bg-subtle), 0 -1px 2px var(--_bg-subtle), 1px -1px 2px var(--_bg-subtle), 1px 0 2px var(--_bg-subtle), 1px 1px 2px var(--_bg-subtle), 0 1px 2px var(--_bg-subtle), -1px 1px 2px var(--_bg-subtle), -1px 0 2px var(--_bg-subtle);
+}
+
+.breadcrumb3-text {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.breadcrumb3-icon {
+    display: table-cell;
+    text-align: center;
+    line-height: 25px;
+    font-size: 25px;
+    padding-right: 10px;
+    vertical-align: middle;
+}
+
+.breadcrumb3-item:first-child {
+    border-radius: 4px 0 0 4px;
+    padding-left: 15px;
+}
+
+.breadcrumb3-item:before,
+.breadcrumb3-item:after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    position: absolute;
+    margin-top: -20px;
+    border-bottom: 20px solid transparent;
+    left: 100%;
+    top: 50%;
+}
+/* all this to create edge on arrow, creating gray arrow in background */
+.breadcrumb3-item:after {
+    border-left: 15px solid var(--_color);
+    margin-left: 1px;
+    z-index: 2;
+}
+
+/* this is arrow itself, overwriting gray arrow */
+.breadcrumb3-item:before {
+    border-left: 15px solid var(--_bgcolor);
+    margin-left: 0px;
+    z-index: 3;
+}
+
+.breadcrumb3-item:hover:not(.no-hover-effect) ,
+.breadcrumb3-item:focus:not(.no-hover-effect){
+    background-color: var(--_hover-bgcolor);
+    color: var(--_hover-color);
+}
+
+.breadcrumb3-item:hover:not(.no-hover-effect):before,
+.breadcrumb3-item:focus:not(.no-hover-effect):before {
+    border-left-color: var(--_hover-bgcolor);
+}
+
+/* remove keyboard navigation focus rectangle */
+.breadcrumb3-item:focus-visible {
+  outline: none;
+}
+
+/* medium size breadcrumb3-item -----------------------------------*/
+.breadcrumb3-md .breadcrumb3-item {
+    height: 32px;
+    line-height: 15px;
+    font-size: 15px;
+    padding-left: 20px;
+}
+
+.breadcrumb3-md .breadcrumb3-icon {
+    line-height: 20px;
+    font-size: 20px;
+    padding-right: 7px;
+}
+
+.breadcrumb3-md .breadcrumb3-item:first-child {
+    border-radius: 3px 0 0 3px;
+    padding-left: 12px;
+}
+
+/* all this to create edge on arrow, creating gray arrow in background */
+.breadcrumb3-md .breadcrumb3-item:after {
+    border-top: 16px solid transparent;
+    border-bottom: 16px solid transparent;
+    border-left: 12px solid var(--_color);
+    margin-top: -16px;
+    margin-left: 1px;
+}
+
+/* this is arrow itself, overwriting gray arrow */
+.breadcrumb3-md .breadcrumb3-item:before {
+    border-top: 16px solid transparent;
+    border-bottom: 16px solid transparent;
+    border-left: 12px solid var(--_bgcolor);
+    margin-top: -16px;
+}
+
+/* small size breadcrumb3-item-sm -----------------------------------*/
+.breadcrumb3-sm .breadcrumb3-item {
+    height: 24px;
+    line-height: 11px;
+    font-size: 11px;
+    padding-right: 8px;
+    padding-left: 18px;
+}
+
+.breadcrumb3-sm .breadcrumb3-icon {
+    line-height: 16px;
+    font-size: 16px;
+    padding-right: 5px;
+}
+
+.breadcrumb3-sm .breadcrumb3-item:first-child {
+    border-radius: 3px 0 0 3px;
+    padding-left: 10px;
+}
+
+/* all this to create edge on arrow, creating gray arrow in background */
+.breadcrumb3-sm .breadcrumb3-item:after {
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-left: 8px solid var(--_color);
+    margin-top: -12px;
+    margin-left: 1px;
+}
+
+/* this is arrow itself, overwriting gray arrow */
+.breadcrumb3-sm .breadcrumb3-item:before {
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-left: 8px solid var(--_bgcolor);
+    margin-top: -12px;
+}
+
+/*breadcrumb3-item colors ------------------------------------------*/
+/* we like specificity, to avoid namespace collisions */
+.breadcrumb3-lg .primary , .breadcrumb3-md .primary , .breadcrumb3-sm .primary {
+    --_color: var(--_bs-primary-text-emphasis);
+    --_bgcolor: var(--_bs-primary);
+    --_bg-subtle: var(--_bs-primary-bg-subtle);
+    --_hover-bgcolor: var(--_bs-success);
+    --_hover-color: var(--_bs-success-text-emphasis);
+}
+
+.breadcrumb3-lg .secondary, .breadcrumb3-md .secondary, .breadcrumb3-sm .secondary {
+    --_color: var(--_bs-secondary-text-emphasis);
+    --_bgcolor: var(--_bs-secondary);
+    --_bg-subtle: var(--_bs-secondary-bg-subtle);
+    --_hover-bgcolor: var(--_bs-primary);
+    --_hover-color: var(--_bs-primary-text-emphasis);
+}
+
+.breadcrumb3-lg .success, .breadcrumb3-md .success, .breadcrumb3-sm .success {
+    --_color: var(--_bs-success-text-emphasis);
+    --_bgcolor: var(--_bs-success);
+    --_bg-subtle: var(--_bs-success-bg-subtle);
+    --_hover-bgcolor: var(--_bs-primary);
+    --_hover-color: var(--_bs-primary-text-emphasis);
+}
+
+.breadcrumb3-lg .info, .breadcrumb3-md .info, .breadcrumb3-sm .info {
+    --_color: var(--_bs-info-text-emphasis);
+    --_bgcolor: var(--_bs-info);
+    --_bg-subtle: var(--_bs-info-bg-subtle);
+    --_hover-bgcolor: var(--_bs-primary);
+    --_hover-color: var(--_bs-primary-text-emphasis);
+}
+
+.breadcrumb3-lg .warning, .breadcrumb3-md .warning, .breadcrumb3-sm .warning {
+    --_color: var(--_bs-warning-text-emphasis);
+    --_bgcolor: var(--_bs-warning);
+    --_bg-subtle: var(--_bs-warning-bg-subtle);
+    --_hover-bgcolor: var(--_bs-primary);
+    --_hover-color: var(--_bs-primary-text-emphasis);
+}
+
+.breadcrumb3-lg .danger, .breadcrumb3-md .danger, .breadcrumb3-sm .danger {
+    --_color: var(--_bs-danger-text-emphasis);
+    --_bgcolor: var(--_bs-danger);
+    --_bg-subtle: var(--_bs-danger-bg-subtle);
+    --_hover-bgcolor: var(--_bs-primary);
+    --_hover-color: var(--_bs-primary-text-emphasis);
+}
+
+.breadcrumb3-lg .light, .breadcrumb3-md .light, .breadcrumb3-sm .light {
+    --_color: var(--_bs-light-text-emphasis);
+    --_bgcolor: var(--_bs-light);
+    --_bg-subtle: var(--_bs-light-bg-subtle);
+    --_hover-bgcolor: var(--_bs-primary);
+    --_hover-color: var(--_bs-primary-text-emphasis);
+}
+
+.breadcrumb3-lg .dark, .breadcrumb3-md .dark, .breadcrumb3-sm .dark {
+    --_color: var(--_bs-dark-text-emphasis);
+    --_bgcolor: var(--_bs-light);
+    --_bg-subtle: var(--_bs-dark-bg-subtle);
+    --_hover-bgcolor: var(--_bs-primary);
+    --_hover-color: var(--_bs-primary-text-emphasis);
+}
+
