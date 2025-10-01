@@ -1,0 +1,237 @@
+﻿<!-- Employees.cshtml -->
+<partial name="_LoadingDatatablesJsAndCss" />
+
+@{
+    <div class="text-center">
+        <h3 class="display-4">Employees table</h3>
+    </div>
+
+    <!-- Here is our table HTML element defined. JavaScript library Datatables
+    will do all the magic to turn it into interactive component -->
+    <table id="EmployeesTable01" class="table table-striped table-bordered ">
+    </table>
+}
+
+@{
+    <!-- Method to tell DatTables.net component which 
+    language file to load -->
+    string GetUrlForDatatablesLanguageFile()
+    {
+        string urlResult = String.Empty;
+
+        try
+        {
+            string culture = Thread.CurrentThread.CurrentUICulture.ToString();
+
+            if (culture.Length > 2)
+            {
+                culture = culture.Substring(0, 2).ToLower();
+            }
+
+            string baseUrl = Url.Content("~/lib/datatables/i18n/");
+
+            switch (culture)
+            {
+                case "de":
+                    urlResult = baseUrl + "de-DE.json";
+                    break;
+                case "fr":
+                    urlResult = baseUrl + "fr-FR.json";
+                    break;
+                case "it":
+                    urlResult = baseUrl + "it-IT.json";
+                    break;
+                default:
+                    urlResult = String.Empty;
+                    break;
+            }
+        }
+        catch
+        {
+            urlResult = String.Empty;
+        }
+
+        return urlResult;
+    }
+}
+
+<script>
+    // Datatables script initialization=========================================
+    // we used defer attribute on jQuery so it might not be available at this point
+    // so we go for vanilla JS event
+
+    document.addEventListener("DOMContentLoaded", InitializeDatatable);
+
+    function InitializeDatatable() {
+        $("#EmployeesTable01").dataTable({
+            //processing-Feature control the processing indicator.
+            processing: true,
+            //paging-Enable or disable table pagination.
+            paging: true,
+            //info-Feature control table information display field
+            info: true,
+            //ordering-Feature control ordering (sorting) abilities in DataTables.
+            ordering: true,
+            //searching-Feature control search (filtering) abilities
+            searching: true,
+            //search.return-Enable / disable DataTables' search on return.
+            search: {
+                return: true
+            },
+            //autoWidth-Feature control DataTables' smart column width handling.
+            autoWidth: true,
+            //lengthMenu-Change the options in the page length select list.
+            lengthMenu: [10, 15, 25, 50, 100],
+            //pageLength-Change the initial page length (number of rows per page)
+            pageLength: 10,
+
+            //order-Initial order (sort) to apply to the table.
+            order: [[1, 'asc']],
+
+            //serverSide-Feature control DataTables' server-side processing mode.
+            serverSide: true,
+
+            //stateSave-State saving - restore table state on page reload.
+            stateSave: true,
+            //stateDuration-Saved state validity duration.
+            //-1 sessionStorage will be used, while for 0 or greater localStorage will be used.
+            stateDuration: -1,
+
+            //language.url- Load language information from remote file.
+            language: {
+                url: '@GetUrlForDatatablesLanguageFile()'
+            },
+
+            //Load data for the table's content from an Ajax source.
+            ajax: {
+                "url": "@Url.Action("EmployeesDT", "Home")",
+                "type": "POST",
+                "datatype": "json"
+            },
+
+            //Set column specific initialization properties
+            columns: [
+                //name-Set a descriptive name for a column
+                //data-Set the data source for the column from the rows data object / array
+                //title-Set the column title
+                //orderable-Enable or disable ordering on this column
+                //searchable-Enable or disable search on the data in this column
+                //type-Set the column type - used for filtering and sorting string processing
+                //visible-Enable or disable the display of this column.
+                //width-Column width assignment.
+                //render-Render (process) the data for use in the table.
+                //className-Class to assign to each cell in the column.
+
+                {   //0
+                    name: 'id',
+                    data: 'id',
+                    title: "@Example04.Resources.SharedResource.EmployeeId",
+                    orderable: true,
+                    searchable: false,
+                    type: 'num',
+                    visible: true
+                },
+                {
+                    //1
+                    name: 'givenName',
+                    data: "givenName",
+                    title: "@Example04.Resources.SharedResource.GivenName",
+                    orderable: true,
+                    searchable: true,
+                    type: 'string',
+                    visible: true
+                },
+                {
+                    //2
+                    name: 'familyName',
+                    data: "familyName",
+                    title: "@Example04.Resources.SharedResource.FamilyName",
+                    orderable: true,
+                    searchable: true,
+                    type: 'string',
+                    visible: true
+                },
+                {
+                    //3
+                    name: 'town',
+                    data: "town",
+                    title: "@Example04.Resources.SharedResource.Town",
+                    orderable: true,
+                    searchable: true,
+                    type: 'string',
+                    visible: true
+                },
+                {
+                    //4
+                    name: 'country',
+                    data: "country",
+                    title: "@Example04.Resources.SharedResource.Country",
+                    orderable: true,
+                    searchable: true,
+                    type: 'string',
+                    visible: true,
+                    width: "150px",
+                    className: 'text-center '
+                },
+                {
+                    //5
+                    name: 'email',
+                    data: "email",
+                    title: "@Example04.Resources.SharedResource.Email",
+                    orderable: true,
+                    searchable: true,
+                    type: 'string',
+                    visible: true
+                },
+                {
+                    //6
+                    name: 'phoneNo',
+                    data: "phoneNo",
+                    title: "@Example04.Resources.SharedResource.PhoneNumber",
+                    orderable: false,
+                    searchable: true,
+                    type: 'string',
+                    visible: true
+                },
+                {
+                    //7
+                    name: 'actions',
+                    data: "actions",
+                    title: "@Example04.Resources.SharedResource.Actions",
+                    orderable: false,
+                    searchable: false,
+                    type: 'string',
+                    visible: true,
+                    render: renderActions
+                },
+                {
+                    //8
+                    name: 'urlForEdit',
+                    data: "urlForEdit",
+                    title: "urlForEdit",
+                    orderable: false,
+                    searchable: false,
+                    type: 'string',
+                    visible: false
+                }
+            ]
+        });
+
+        function renderActions(data, type, row, meta) {
+            //for Edit button we get Url from the table data
+            let html1 =
+                '<a class="btn btn-info" href="' +
+                row.urlForEdit +
+                '"> @Example04.Resources.SharedResource.Edit</a>';
+
+            //for Info button we create Url in JavaScript
+            let editUrl = "@Url.Action("EmployeeInfo", "Home")" +
+                "?EmployeeId=" + row.id;
+            let html2 =
+                '<a class="btn btn-info"  style="margin-left: 10px" href="' +
+                editUrl + '"> @Example04.Resources.SharedResource.Info</a>';
+            return html1 + html2;
+        }
+    }
+</script>
+

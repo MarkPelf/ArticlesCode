@@ -1,0 +1,19 @@
+﻿@using Example08.Models.Home
+
+@model SelectedEmployeesVM
+
+@{
+    <div class="text-center">
+        <h3 class="display-4">SelectedEmployees</h3>
+        <br />
+        @if (Model.SelectedIdsList != null)
+        {
+            foreach (string id in Model.SelectedIdsList)
+            {
+                @:Id= @id;
+            }
+        }
+        <br />
+        This is proof-of-concept application, with these Ids you can do what you want.
+    </div>
+}

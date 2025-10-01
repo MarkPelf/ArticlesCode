@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-16"?>
+<SchemaMap xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Compressed="true">
+  <SchemaEntry OriginalSchemaUri="C:\TmpXSD\XsdExample_Ver4\Example01\XSD2\BigCompany.xsd" ResourceSchemaUri="Schema1.zxsd" TargetNamespaceUri="https://markpelf.com/BigCompany.xsd" ExplicitlyLoad="true" />
+</SchemaMap>

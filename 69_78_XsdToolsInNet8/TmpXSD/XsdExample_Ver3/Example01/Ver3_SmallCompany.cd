@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access" MembersFormat="FullSignature">
+  <Class Name="https.markpelf.com.SmallCompany.xsd.SmallCompany" BaseTypeListCollapsed="true">
+    <Position X="1.25" Y="0.5" Width="5.25" />
+    <Compartments>
+      <Compartment Name="ProtectedInternal" Collapsed="true" />
+      <Compartment Name="Private" Collapsed="true" />
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="https.markpelf.com.SmallCompany.xsd.SmallCompany.EmployeeLocalType">
+        <Compartments>
+          <Compartment Name="ProtectedInternal" Collapsed="true" />
+          <Compartment Name="Private" Collapsed="true" />
+        </Compartments>
+        <TypeIdentifier>
+          <NewMemberFileName>C#ClassesForXml\SmallCompany_ver3_3.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Class>
+      <Class Name="https.markpelf.com.SmallCompany.xsd.SmallCompany.InfoDataLocalType">
+        <Compartments>
+          <Compartment Name="ProtectedInternal" Collapsed="true" />
+          <Compartment Name="Private" Collapsed="true" />
+        </Compartments>
+        <TypeIdentifier>
+          <NewMemberFileName>C#ClassesForXml\SmallCompany_ver3_3.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAgwKAAQgAAQAAAAAAAAgAAKAAAAAAILAAIAAGAABg=</HashCode>
+      <FileName>C#ClassesForXml\SmallCompany_ver3_3.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

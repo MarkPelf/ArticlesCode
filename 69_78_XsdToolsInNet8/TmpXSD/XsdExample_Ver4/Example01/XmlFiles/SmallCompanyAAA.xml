@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--SmallCompanyAAA.xml+++++++++++++++++++++++++++++++++++++++++++++++-->
+<SmallCompany xmlns="https://markpelf.com/SmallCompany.xsd">
+	<CompanyName>SmallCompanyAAA</CompanyName>
+	<Employee>
+		<Name_String_NO>Mark</Name_String_NO>
+		<City_String_O>Belgrade</City_String_O>
+	</Employee>
+	<Employee>
+		<Name_String_NO>John</Name_String_NO>
+	</Employee>
+	<InfoData>
+		<Id_Int_NO>11</Id_Int_NO>
+		<Quantity_Int_O>123</Quantity_Int_O>
+	</InfoData>
+	<InfoData>
+		<Id_Int_NO>22</Id_Int_NO>
+	</InfoData>
+</SmallCompany>

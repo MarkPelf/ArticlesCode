@@ -1,0 +1,73 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LiquidTechnologies.XmlObjects.Runtime" Version="20.7.14" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
+    <PackageReference Include="Serilog" Version="4.0.1" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="8.0.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="6.0.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="XSD1\SmallCompany.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>SmallCompany.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="XSD2\BigCompany.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>BigCompany.xsd</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="XSD2\BigCompany.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Generator>LxCodeGenerator</Generator>
+      <LastGenOutput>BigCompany.cs</LastGenOutput>
+      <Lx-WriteSourceLocationComments>False</Lx-WriteSourceLocationComments>
+      <Lx-GenerateSample>True</Lx-GenerateSample>
+      <Lx-GenerationModel>Simple</Lx-GenerationModel>
+      <Lx-WriteDefaultValuesForOptionalElements>True</Lx-WriteDefaultValuesForOptionalElements>
+      <Lx-GenerateCommonBaseClass>False</Lx-GenerateCommonBaseClass>
+      <Lx-WriteDefaultValuesForOptionalAttributes>True</Lx-WriteDefaultValuesForOptionalAttributes>
+      <Lx-NullableReferenceTypes>True</Lx-NullableReferenceTypes>
+      <Lx-VSProjectGenerateXsdValdiation>False</Lx-VSProjectGenerateXsdValdiation>
+    </None>
+    <None Update="XmlFiles\BigCompanyMMM.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="XSD1\SmallCompany.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Generator>LxCodeGenerator</Generator>
+      <LastGenOutput>SmallCompany.cs</LastGenOutput>
+      <Lx-WriteSourceLocationComments>False</Lx-WriteSourceLocationComments>
+      <Lx-GenerateSample>True</Lx-GenerateSample>
+      <Lx-GenerationModel>Simple</Lx-GenerationModel>
+      <Lx-WriteDefaultValuesForOptionalElements>True</Lx-WriteDefaultValuesForOptionalElements>
+      <Lx-NullableReferenceTypes>True</Lx-NullableReferenceTypes>
+      <Lx-GenerateCommonBaseClass>False</Lx-GenerateCommonBaseClass>
+      <Lx-MixedContentHandling>TreatAsAny</Lx-MixedContentHandling>
+      <Lx-VSProjectGenerateXsdValdiation>False</Lx-VSProjectGenerateXsdValdiation>
+    </None>
+    <None Update="XmlFiles\SmallCompanyAAA.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

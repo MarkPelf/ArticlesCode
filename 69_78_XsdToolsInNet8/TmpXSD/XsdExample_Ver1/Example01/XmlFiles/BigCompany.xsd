@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--BigCompany.xsd+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		   attributeFormDefault="unqualified" 
+		   elementFormDefault="qualified" 
+		   targetNamespace="https://markpelf.com/BigCompany.xsd" 
+		   xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="BigCompany">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="CompanyName" type="xs:string" />
+				<xs:element maxOccurs="unbounded" name="Employee">
+					<xs:complexType>
+						<xs:sequence>
+							<!--Name_String_NO is String NotOptional-->
+							<xs:element name="Name_String_NO" type="xs:string" />
+							<!--City_String_O is String Optional-->
+							<xs:element minOccurs="0" name="City_String_O" type="xs:string" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element maxOccurs="unbounded" name="InfoData">
+					<xs:complexType>
+						<xs:sequence>
+							<!--Data1_Int_NO_R is Int NotOptional+Required-->
+							<xs:element name="Data1_Int_NO_R" type="xs:int" minOccurs="1" nillable="false" />
+							<!--Data2_Int_NO_NR is Int NotOptional+NotRequired-->
+							<xs:element name="Data2_Int_NO_NR" type="xs:int" minOccurs="1" nillable="true" />
+							<!--Data3_Int_O_R is Int Optional+Required-->
+							<xs:element name="Data3_Int_O_R" type="xs:int" minOccurs="0" nillable="false" />
+							<!--Data4_Int_O_NR is Int Optional+NotRequired-->
+							<xs:element name="Data4_Int_O_NR" type="xs:int" minOccurs="0" nillable="true" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

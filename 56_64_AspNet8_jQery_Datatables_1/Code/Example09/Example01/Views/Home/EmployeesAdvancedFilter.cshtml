@@ -1,0 +1,53 @@
+﻿<!-- EmployeesAdvancedFilter.cshtml -->
+@using Example09.Models.Home;
+
+@model EmployeesAdvancedFilterVM
+
+@{
+    <div class="text-center">
+        <h3 class="display-4">Employees Advanced Filter</h3>
+    </div>
+
+    <fieldset class="border rounded-3 p-3" style="width:600px">
+        <legend class="float-none w-auto px-3">Choose filter parameters</legend>
+
+        <p class="bg-light m-1 border p-1">
+        * = whildchar, zero or more characters <br/>
+        ? = whildchar, one character
+        </p>
+
+        <form id="form1" method="post">                  
+
+            <div class="form-group">
+                <label asp-for=FirstName>Given Name</label>
+                <input class="form-control" asp-for="FirstName" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for=LastName>Family Name</label>
+                <input class="form-control" asp-for="LastName" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for=City>Town</label>
+                <input class="form-control" asp-for="City" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for=Country></label>
+                <input class="form-control" asp-for="Country" />
+            </div>
+
+            <button type="submit" form="form1" class="btn btn-primary mt-3 ms-3 float-end" asp-area="" 
+                asp-controller="Home" asp-action="EmployeesAdvancedFilter" asp-route-IsSubmit="true">
+                Submit
+            </button>
+
+            <a class="btn btn-primary mt-3 float-end" asp-area=""
+                    asp-controller="Home" asp-action="EmployeesAdvancedFilter" asp-route-IsReset="true">
+                Reset
+            </a>
+        </form>
+    </fieldset>
+}
+

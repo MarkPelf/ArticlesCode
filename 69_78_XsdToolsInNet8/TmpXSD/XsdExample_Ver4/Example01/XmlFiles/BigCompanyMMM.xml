@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--BigCompanyMMM.xml+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+<BigCompany xmlns="https://markpelf.com/BigCompany.xsd">
+	<CompanyName>BigCompanyMMM</CompanyName>
+	<Employee>
+		<Name_String_NO>Mark</Name_String_NO>
+		<City_String_O>Belgrade</City_String_O>
+	</Employee>
+	<Employee>
+		<Name_String_NO>John</Name_String_NO>
+	</Employee>
+	<InfoData>
+		<Data1_Int_NO_R>555</Data1_Int_NO_R>
+		<Data2_Int_NO_NR>16</Data2_Int_NO_NR>
+		<Data3_Int_O_R>333</Data3_Int_O_R>
+		<Data4_Int_O_NR>17</Data4_Int_O_NR>
+	</InfoData>
+	<InfoData>
+		<Data1_Int_NO_R>123</Data1_Int_NO_R>
+		<Data2_Int_NO_NR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true" />
+		<Data3_Int_O_R>15</Data3_Int_O_R>
+		<Data4_Int_O_NR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true" />
+	</InfoData>
+	<InfoData>
+		<Data1_Int_NO_R>777</Data1_Int_NO_R>
+		<Data2_Int_NO_NR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true" />
+	</InfoData>
+</BigCompany>

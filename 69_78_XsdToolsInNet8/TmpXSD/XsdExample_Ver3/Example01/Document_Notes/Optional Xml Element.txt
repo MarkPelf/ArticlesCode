@@ -1,0 +1,30 @@
+﻿=================================
+XML:  Optional Xml-Element and Xml-Attribute
+
+Optional: Does not need to be present in the XML.
+
+For XSD Schema elements:
+Optional: minOccurs="0" attribute ->In order to set a schema element as optional, you include the minOccurs="0" attribute
+
+Examples of XSD for full element:
+<xs:element maxOccurs="unbounded" name="InfoData">
+	<xs:complexType>
+		<xs:sequence>
+			<!--Id_Int_NO is Int NotOptional-->
+			<xs:element name="Id_Int_NO" type="xs:int" />
+			<!--Quantity_Int_O is Int Optional-->
+			<xs:element minOccurs="0" name="Quantity_Int_O" type="xs:int" />
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+
+Examples of complaint XML elements:
+<InfoData>
+	<Id_Int_NO>11</Id_Int_NO>
+	<Quantity_Int_O>123</Quantity_Int_O>
+</InfoData>
+<InfoData>
+	<Id_Int_NO>22</Id_Int_NO>
+</InfoData>
+
+=======================

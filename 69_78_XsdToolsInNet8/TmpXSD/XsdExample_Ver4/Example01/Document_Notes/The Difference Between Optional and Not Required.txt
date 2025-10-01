@@ -1,0 +1,60 @@
+﻿=================================
+XML: The Difference Between Optional and Not Required for Xml-Element and Xml-Attribute
+
+Optional: Does not need to be present in the XML.
+Not Required: Does not need to have a value.
+
+You can have any combination:
+Optional + Not Required
+Optional + Required
+Not Optional + Not Required
+Not Optional + Required
+
+For XSD Schema elements:
+Optional: minOccurs="0" attribute ->In order to set a schema element as optional, you include the minOccurs="0" attribute
+Required: nillable="true" attribute ->In order to set a schema element as not required, you include the nillable="true" attribute. 
+
+String data types are not required by default, though you can force them to be required. 
+Other data types, such as Boolean, Integer, Date, Time, etc. are all required by default. In order to make 
+one of these data types not required, you must set the nillable attribute equal to true for the element in the schema. 
+
+Examples of XSD for full element:
+<xs:element maxOccurs="unbounded" name="InfoData">
+	<xs:complexType>
+		<xs:sequence>
+			<!--Data1_Int_NO_R is NotOptional+Required-->
+			<xs:element name="Data1_Int_NO_R" type="xs:int" minOccurs="1" nillable="false" />
+			<!--Data2_Int_NO_NR is NotOptional+NotRequired-->
+			<xs:element name="Data2_Int_NO_NR" type="xs:int" minOccurs="1" nillable="true" />
+			<!--Data3_Int_O_R is Optional+Required-->
+			<xs:element name="Data3_Int_O_R" type="xs:int" minOccurs="0" nillable="false" />
+			<!--Data4_Int_O_NR is Optional+NotRequired-->
+			<xs:element name="Data4_Int_O_NR" type="xs:int" minOccurs="0" nillable="true" />
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+
+Examples of complaint XML elements:
+  <InfoData>
+		<Data1_Int_NO_R>-2147483647</Data1_Int_NO_R>
+		<Data2_Int_NO_NR>16</Data2_Int_NO_NR>
+		<Data3_Int_O_R>-2147483647</Data3_Int_O_R>
+		<Data4_Int_O_NR>17</Data4_Int_O_NR>
+	</InfoData>
+	<InfoData>
+		<Data1_Int_NO_R>123</Data1_Int_NO_R>
+		<Data2_Int_NO_NR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true" />
+		<Data3_Int_O_R>15</Data3_Int_O_R>
+		<Data4_Int_O_NR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true" />
+	</InfoData>
+	<InfoData>
+		<Data1_Int_NO_R>123</Data1_Int_NO_R>
+		<Data2_Int_NO_NR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true" />
+	</InfoData>
+
+=======================
+
+
+
+
+
