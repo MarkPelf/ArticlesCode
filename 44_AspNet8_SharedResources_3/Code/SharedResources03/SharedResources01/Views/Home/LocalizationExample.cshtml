@@ -1,0 +1,33 @@
+﻿@* LocalizationExample.cshtml ====================================================*@
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+
+@model LocalizationExampleViewModel
+
+@{
+    <partial name="_ValidationClassesSyncBetweenAspNetAndBootstrap" />
+
+    <div style="width:500px ">
+        <fieldset class="border rounded-3 p-3 bg-info">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <form id="formlogin" novalidate>
+                <div class="form-group">
+                    <label asp-for="UserName"></label>
+                    <div>
+                        <span asp-validation-for="UserName" class="text-danger"></span>
+                    </div>
+                    <input class="form-control" asp-for="UserName" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email"></label>
+                    <div>
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <input class="form-control" asp-for="Email" />
+                </div>
+                <input type="hidden" name="IsSubmit" value="true">
+                <button type="submit" class="btn btn-primary mt-3 float-end"> Submit</button>
+            </form>
+        </fieldset>
+    </div>    
+}

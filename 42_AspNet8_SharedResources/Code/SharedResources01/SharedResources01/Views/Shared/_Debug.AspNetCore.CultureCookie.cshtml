@@ -1,0 +1,26 @@
+﻿@* _Debug.AspNetCore.CultureCookie.cshtml ===================================================*@
+@using Microsoft.AspNetCore.Localization;
+
+@{
+    string text = String.Empty;
+
+    try
+    {
+        var myContext = Context;
+        string? cultureCookieValue = null;
+        myContext.Request.Cookies.TryGetValue(
+            CookieRequestCultureProvider.DefaultCookieName, out cultureCookieValue);
+        string? text1 = "Request Cookie was (Refresh might be needed if changing language) " + 
+            CookieRequestCultureProvider.DefaultCookieName + "[" + cultureCookieValue + "]";
+
+        text = text1;
+    }
+    catch (Exception ex)
+    {
+        text = ex.Message;
+    }
+
+    <span>
+        @text
+    </span>
+}

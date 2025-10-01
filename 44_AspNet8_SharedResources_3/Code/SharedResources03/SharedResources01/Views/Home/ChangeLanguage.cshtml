@@ -1,0 +1,27 @@
+﻿@* ChangeLanguage.cshtml ===================================================*@
+@model ChangeLanguageViewModel
+
+@{
+    <div style="width:500px">
+        <p class="bg-info">
+            <partial name="_Debug.AspNetCore.CultureCookie" /><br />
+        </p>
+
+        <form id="form1" >
+            <fieldset class="border rounded-3 p-3">
+                <legend class="float-none w-auto px-3">Change Language</legend>
+                <div class="form-group">
+                    <label asp-for="SelectedLanguage">Select Language</label>
+                    <select class="form-select" asp-for="SelectedLanguage"
+                            asp-items="@Model.ListOfLanguages">
+                    </select>
+                    <input type="hidden" name="IsSubmit" value="true">
+                    <button type="submit" form="form1" class="btn btn-primary mt-3 float-end"
+                            asp-area="" asp-controller="Home" asp-action="ChangeLanguage">
+                        Submit
+                    </button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+}

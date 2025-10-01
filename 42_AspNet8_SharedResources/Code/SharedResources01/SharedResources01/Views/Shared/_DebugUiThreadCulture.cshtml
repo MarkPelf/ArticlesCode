@@ -1,0 +1,19 @@
+﻿@* _DebugUiThreadCulture.cshtml =======================================================*@
+@{
+    string text = String.Empty;
+
+    try
+    {
+        text = "Thread CurrentUICulture is [" + @Thread.CurrentThread.CurrentUICulture.ToString() + "] ; ";
+        text += "Thread CurrentCulture is [" + @Thread.CurrentThread.CurrentCulture.ToString() + "]";
+    }
+    catch (Exception ex)
+    {
+        text = ex.Message;
+    }
+
+    <span>
+        @text
+    </span>
+}
+

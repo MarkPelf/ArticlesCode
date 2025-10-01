@@ -1,0 +1,25 @@
+﻿@* _ValidationClassesSyncBetweenAspNetAndBootstrap.cshtml===================== *@
+@*
+All this is to sync Asp.Net CSS error classes with Bootstrap CSS classes to
+mark error input elements border to red by Bootstrap.
+
+Asp.Net will add CSS class .input-validation-error to form a field with an error.
+But, Bootstrap does not know what to do with that CSS class, so that class
+needs to be mapped to CSS class that Bootstrap understands, and that is
+CSS class .is-invalid.
+
+That is the purpose of this JavaScript code that is here. Of course, we hook
+to DOMContentLoaded event and do the mapping of CSS classes.
+
+The final result is that the red line on the form control marking an invalid field.
+*@
+
+
+<script type="text/javascript">
+    window.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll("input.input-validation-error")
+            .forEach((elem) => { elem.classList.add("is-invalid"); }
+            );
+    });
+</script>
+

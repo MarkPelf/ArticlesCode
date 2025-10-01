@@ -1,0 +1,77 @@
+﻿@* LocalizationExample.cshtml ====================================================*@
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@using SharedResources04
+
+@model LocalizationExampleViewModel
+
+@* Here is of course the Dependency Injection (DI) coming in and filling
+all the dependencies. The key thing is we are asking for a specific
+type=SharedResource.
+If it doesn't work for you, you can try to use full class name
+in your DI instruction, like this one:
+@inject IStringLocalizer<SharedResources04.SharedResource> StringLocalizer
+ *@
+
+@inject IStringLocalizer<SharedResource> StringLocalizer
+
+@{
+    <div style="width:600px">
+        <p class="text-success">
+            Controller Thread Culture:  <br />
+            @Model.ThreadCultureInController
+        </p>
+
+        <p class="text-primary">
+            Localized In Controller By ResourceManager: <br />
+            @Model.LocalizedInControllerByResourceManager1
+        </p>
+
+        <p class="text-primary">
+            Localized In Controller By ResourceManager: <br />
+            @Model.LocalizedInControllerByResourceManager2
+        </p>
+
+        <p class="text-primary">
+            Localized In Controller By IStringLocalizer: <br />
+            @Model.LocalizedInControllerByIStringLocalizer1
+        </p>
+
+        <p class="text-primary">
+            Localized In Controller By IStringLocalizer: <br />
+            @Model.LocalizedInControllerByIStringLocalizer2
+        </p>
+
+        <p class="text-success">
+            @{
+                string text = "Thread CurrentUICulture is [" +
+                @Thread.CurrentThread.CurrentUICulture.ToString() + "] ; ";
+                text += "Thread CurrentCulture is [" +
+                @Thread.CurrentThread.CurrentCulture.ToString() + "]";
+            }
+            View Thread Culture:  <br />
+            @text
+        </p>
+
+        <p class="text-primary">
+            Localized In View By ResourceManager: <br />
+            @SharedResources04.Resources.SharedResource.Wellcome
+        </p>
+
+        <p class="text-primary">
+            Localized In View By ResourceManager: <br />
+            @SharedResources04.Resources.SharedResource.Hello_World
+        </p>
+
+        <p class="text-primary">
+            Localized In View By IStringLocalizer: <br />
+            @StringLocalizer["Wellcome"]
+        </p>
+
+        <p class="text-primary">
+            Localized In View By IStringLocalizer: <br />
+            @StringLocalizer["Hello World"]
+        </p>
+
+    </div>
+}

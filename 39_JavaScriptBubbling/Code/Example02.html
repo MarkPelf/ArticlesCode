@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <!--Html part---------------------------------------------->
+    <div id="Div1" style="border: 1px solid; padding:10px; 
+        margin:20px; background-color:aqua;">
+        Div1
+        <div id="Div2" style="border: 1px solid; padding:10px; 
+            margin:20px;background-color:chartreuse">
+            Div2
+            <div id="Div3" style="border: 1px solid; padding:10px;
+                margin:20px; 
+                background-color:yellow; ">
+                Div3 <br/>
+                Please click here.
+            </div>
+        </div>
+    </div>
+    <hr />
+    <h3>Example 01</h3>
+    <br />
+    <button onclick="task3()"> Task3-Clear Output Box (delayed 1 sec)</button><br />
+    <hr />
+
+    <h3>Output</h3>
+    <div id="OutputBox" style="border: 1px solid; min-height:20px">
+    </div>
+
+    <!--JavaScript part---------------------------------------------->
+    <script>
+
+        function OutputBoxClear() {
+            document.getElementById("OutputBox").innerHTML = "";
+        }
+
+        function OutputBoxWriteLine(textLine) {
+            document.getElementById("OutputBox").innerHTML
+                += textLine + "<br/>";
+        }
+
+        function OutputBoxWrite(textLine) {
+            document.getElementById("OutputBox").innerHTML
+                += textLine;
+        }
+
+        function ObjectDescription(oo) {
+            //expecting Node or Window or Document
+            //logging some basic info to be able to 
+            //identify which object is that in the DOM tree
+            let result;
+
+            if (oo != null) {
+                result = "";
+                result += oo.toString();
+
+                if (oo.nodeName !== undefined) {
+                    result += ", nodeName:" + oo.nodeName;
+                }
+
+                if (oo.id !== undefined && oo.id !== null
+                    && oo.id.trim().length !== 0) {
+                    result += ", id:" + oo.id;
+                }
+
+                if (oo.data !== undefined) {
+                    let myData = oo.data;
+                    let length = myData.length;
+                    if (length > 30) {
+                        myData = myData.substring(0, 30);
+                    }
+                    result += `, data(length ${length}):` + myData;
+                }
+            }
+
+            return result;
+        }
+
+        function PhaseDescription(phase) {
+            //some text to explain phase numbers
+            let result;
+            if (phase !== undefined && phase !== null) {
+                switch (phase) {
+                    case 1:
+                        result = "1 (Capturing)";
+                        break;
+                    case 2:
+                        result = "2 (Target)";
+                        break;
+                    case 3:
+                        result = "3 (Bubbling)";
+                        break;
+                    default:
+                        result = phase;
+                        break;
+                }
+            }
+            return result;
+        }
+
+        function EventDescription(e, handlerPhase) {
+            //function to log info from event object
+            //here are properties, that are important
+            //->handlerPhase -> we log info from which handler this event is coming 
+            //                  from, is this from bubbling of capturing handler
+            //->e.toString() -> class of event object
+            //->e.type -> type of even, for example "click"
+            //->e.timeStamp -> timestamp of event in milliseconds,
+            //                 counted from load of the page
+            //->e.target -> real target (object) of event, for example
+            //              real object that was clicked on
+            //->e.currentTarget -> current target (object) that is throwing 
+            //                     this event, since event got here by either
+            //                     bubbling of capturing propagation
+            //->e.eventPhase -> real phase of event, regardless of handler that
+            //                  created event handler, can be 1-capturing, 
+            //                  2-target, 3-bubbling phase
+            /* Sample execution:
+            6600.900000095367[object PointerEvent]-----------
+            ......EventType:click..HandlerPhase:Capturing..EventPhase:1 (Capturing)
+            ......Target:[object HTMLElement], nodeName:B, id:Bold4
+            ......CurrentTarget:[object HTMLDivElement], nodeName:DIV, id:Div1
+            */
+            const dots = "......";
+            let result;
+            if (e !== undefined && e !== null) {
+                let eventObject = e.toString();
+                let eventType = (e.type) ?
+                    (e.type.toString()) : undefined;
+                let eventTimestamp = (e.timeStamp) ?
+                    (e.timeStamp.toString()) : undefined;
+                let eventTarget = (e.target) ? ObjectDescription(e.target) : undefined;
+                let eventCurrentTarget = (e.currentTarget) ?
+                    ObjectDescription(e.currentTarget) : undefined;
+                let eventPhase = (e.eventPhase) ?
+                    PhaseDescription(e.eventPhase) : undefined;
+
+                result = "";
+                result += (eventTimestamp) ? eventTimestamp : "";
+                result += (eventObject) ? eventObject : "";
+                result += "-----------<br>";
+                result += dots;
+                result += (eventType) ? ("EventType:" + eventType) : "";
+                result += (handlerPhase) ? ("..HandlerPhase:" + handlerPhase) : "";
+                result += (eventPhase) ? ("..EventPhase:" + eventPhase) : "";
+                result += "<br>";
+                result += (eventTarget) ? (dots + "Target:" + eventTarget + "<br>") : "";
+                result += (eventCurrentTarget) ? (dots + "CurrentTarget:" +
+                    eventCurrentTarget + "<br>") : "";
+            }
+            return result;
+        }
+
+        function MyEventHandler(event, handlerPhase) {
+            OutputBoxWrite(EventDescription(event, handlerPhase));
+        }       
+
+        window.onerror = function (message, url, line, col, error) {
+            OutputBoxWriteLine(`Error:${message}\n At ${line}:${col} of ${url}`);
+        };
+
+        function task1() {
+            OutputBoxClear();
+            OutputBoxWriteLine("Task1-Activate EventHandlers");
+
+            //Div1 event handlers
+            let div1=document.getElementById("Div1");
+            div1.addEventListener("click", (e)=>MyEventHandler(e, "Bubbling"));
+            div1.addEventListener("click", (e)=>MyEventHandler(e, "Capturing"), true);
+
+            //Div2 event handlers
+            let div2=document.getElementById("Div2");
+            div2.addEventListener("click", (e)=>MyEventHandler(e, "Bubbling"));
+            div2.addEventListener("click", (e)=>MyEventHandler(e, "Capturing"), true);
+
+            //Div3 event handlers
+            //we deliberately mix defining order of bubbling and capturing events
+            //to see order when events are fired (**)
+            let div3=document.getElementById("Div3");
+            //actually, this will be handler for bubbling and target phase
+            div3.addEventListener("click", (e)=>MyEventHandler(e, "Bubbling"));
+            //actually, this will be handler for capturing and target phase
+            div3.addEventListener("click", (e)=>MyEventHandler(e, "Capturing"), true);
+            //actually, this will be handler for bubbling and target phase
+            div3.addEventListener("click", (e)=>MyEventHandler(e, "Bubbling2"));
+            //actually, this will be handler for capturing and target phase
+            div3.addEventListener("click", (e)=>MyEventHandler(e, "Capturing2"), true);
+        }       
+
+        function task3() {
+            //we need to delay for 1 second 
+            setTimeout(OutputBoxClear, 1000);
+        }
+
+        task1();
+
+    </script>
+</body>
+<!--
+Output
+
+    -->
+
+</html>

@@ -1,0 +1,44 @@
+﻿@* LocalizationExample.cshtml ====================================================*@
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+
+@model LocalizationExampleViewModel
+
+@* Here is of course the Dependency Injection (DI) coming in and filling
+all the dependencies. The key thing is we are asking for a specific
+type=SharedResource. 
+If it doesn't work for you, you can try to use full class name
+in your DI instruction, like this one:
+@inject IStringLocalizer<SharedResources01.SharedResource> StringLocalizer
+ *@
+
+@inject IStringLocalizer<SharedResource> StringLocalizer
+@inject IHtmlLocalizer<SharedResource> HtmlLocalizer
+
+@{
+    <div style="width:600px">
+        <p class="bg-info">
+            IStringLocalizer Localized  in Controller: 
+            @Model.IStringLocalizerInController
+        </p>
+
+        <p class="bg-info">
+            @{
+                string? text1 = StringLocalizer["Wellcome"];
+            }
+            IStringLocalizer Localized  in View: @text1
+        </p>
+
+        <p class="bg-info">
+            IHtmlLocalizer Localized  in Controller: 
+            @Model.IHtmlLocalizerInController
+        </p>
+
+        <p class="bg-info">
+            @{
+                string? text2 = "Wellcome";
+            }
+            IHtmlLocalizer Localized  in View: @HtmlLocalizer[@text2]
+        </p>
+    </div>
+}
