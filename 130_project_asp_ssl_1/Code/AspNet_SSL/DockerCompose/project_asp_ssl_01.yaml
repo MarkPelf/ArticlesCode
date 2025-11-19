@@ -1,0 +1,44 @@
+# project_asp_ssl_01.yaml
+# build & run project
+# docker compose -p project_asp_ssl -f project_asp_ssl_01.yaml up -d
+# see images
+# docker image ls
+# see containers
+# docker ps -a
+# stop project
+# docker compose -p project_asp_ssl down
+
+services:
+  reverseproxy:
+      build:
+        context: .
+        dockerfile: nginx.Dockerfile
+      depends_on: 
+        - asp_net_app
+      ports:
+# Use other ports from 50443 and 50080 if those are not available on your machine:
+        - "50443:443" 
+        #- "50447:443" 
+        #- "50080:80" 
+        - "51080:80" 
+      networks:
+        - net01
+
+
+  # main app
+  asp_net_app:
+    build:
+      context: ../AspNetHelloWorld2/
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8080
+    ports:
+      - "8080:8080"
+    networks:
+      - net01
+
+networks:
+  net01:
+
+

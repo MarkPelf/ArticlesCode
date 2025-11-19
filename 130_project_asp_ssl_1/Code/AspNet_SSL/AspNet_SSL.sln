@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36705.20
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetHelloWorld2", "AspNetHelloWorld2\AspNetHelloWorld2.csproj", "{156AE933-A4B1-4EBB-9738-BF0F9A6B6B56}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DockerCompose", "DockerCompose", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		DockerCompose\nginx.conf = DockerCompose\nginx.conf
+		DockerCompose\nginx.Dockerfile = DockerCompose\nginx.Dockerfile
+		DockerCompose\project_asp_ssl_01.yaml = DockerCompose\project_asp_ssl_01.yaml
+		DockerCompose2\project_asp_ssl_02.yaml = DockerCompose2\project_asp_ssl_02.yaml
+		DockerCompose3\project_asp_ssl_03.yaml = DockerCompose3\project_asp_ssl_03.yaml
+		DockerCompose\README_Instructions1.md = DockerCompose\README_Instructions1.md
+		DockerCompose\README_Instructions2.md = DockerCompose\README_Instructions2.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ssl", "ssl", "{B77CF684-0923-4F4F-BA03-5F366E050F59}"
+	ProjectSection(SolutionItems) = preProject
+		DockerCompose\ssl\nginx.crt = DockerCompose\ssl\nginx.crt
+		DockerCompose\ssl\nginx.key = DockerCompose\ssl\nginx.key
+		DockerCompose\ssl\nginx.pfx = DockerCompose\ssl\nginx.pfx
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{156AE933-A4B1-4EBB-9738-BF0F9A6B6B56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{156AE933-A4B1-4EBB-9738-BF0F9A6B6B56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{156AE933-A4B1-4EBB-9738-BF0F9A6B6B56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{156AE933-A4B1-4EBB-9738-BF0F9A6B6B56}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B77CF684-0923-4F4F-BA03-5F366E050F59} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A1205265-6394-49A9-A5D2-F1F1A80CDFA6}
+	EndGlobalSection
+EndGlobal
